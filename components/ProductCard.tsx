@@ -51,7 +51,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         ) : (
           <div className="flex flex-col items-center justify-center text-gray-400">
             <ImageOff size={40} />
-            <span className="text-xs mt-1">No Image</span>
+            <span className="text-xs mt-1.5">No Image</span>
           </div>
         )}
         <WishlistButton product={product} className='' />
