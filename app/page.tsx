@@ -1,13 +1,29 @@
 import { Container } from "@/components/Container";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import HomeBanner from "@/components/HomeBanner";
+import { HomeBrands } from "@/components/HomeBrands";
+import { HomeCategories } from "@/components/HomeCategories";
+import { LatestBlog } from "@/components/blog/LatestBlog";
+import ProductGrid from "@/components/ProductGrid";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MVCart | Your One-Stop Shop",
+  description: "Browse the latest products, top brands, and expert blog insights at [Store Name]. Shop our curated collections today.",
+  keywords: ["e-commerce", "shopping", "latest fashion", "tech gadgets", "online store"],
+}
 
 export default function Home() {
+
+
   return (
-    <Container className="bg-shop-light-pink">
-      <h2 className="text-xl font-semibold">Home Page</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum vel tempora corrupti possimus eos doloremque, tempore id, beatae explicabo numquam assumenda nobis fugiat a natus eius eligendi repudiandae voluptatem provident?</p>
-      <Button variant={"default"} size={'lg'}>chekout</Button>
+    <Container>
+      <HomeBanner />
+      <div className="mt-4 md:mt-10 ">
+        <ProductGrid />
+      </div>
+      <HomeCategories />
+      <HomeBrands />
+      <LatestBlog />
     </Container>
   );
 }

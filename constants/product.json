@@ -1,0 +1,312 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Bluetooth Earbuds Wireless Bluetooth Earbuds Wireless Bluetooth Earbuds Wireless Bluetooth Earbuds",
+        "category": "gadgets",
+        "price": 1999,
+        "stock": 50,
+        "image": "/products/earbud.png",
+        "description": "Noise-cancelling wireless earbuds.",
+        "status": "hot"
+    },
+    {
+        "id": 2,
+        "name": "Smart Watch Pro",
+        "category": "gadgets",
+        "price": 4599,
+        "stock": 40,
+        "image": "/products/smartwatch.png",
+        "description": "Track fitness and notifications.",
+        "status": "hot"
+    },
+    {
+        "id": 3,
+        "name": "DSLR Camera 24MP",
+        "category": "gadgets",
+        "price": 25999,
+        "stock": 15,
+        "image": "/products/camera.png",
+        "description": "Capture high-quality photos.",
+        "status": "new"
+    },
+    {
+        "id": 4,
+        "name": "Gaming Headset RGB",
+        "category": "gadgets",
+        "price": 2999,
+        "stock": 25,
+        "image": "/products/headset.png",
+        "description": "Immersive surround sound.",
+        "status": "hot"
+    },
+    {
+        "id": 5,
+        "name": "Portable Bluetooth Speaker",
+        "category": "gadgets",
+        "price": 1799,
+        "stock": 60,
+        "image": "/products/speaker.png",
+        "description": "Compact and powerful sound.",
+        "status": "new"
+    },
+    {
+        "id": 6,
+        "name": "Men's Casual Shirt",
+        "category": "fashion",
+        "price": 999,
+        "stock": 100,
+        "image": "/products/shirt.png",
+        "description": "Comfortable cotton shirt.",
+        "status": "sale"
+    },
+    {
+        "id": 7,
+        "name": "Women's Summer Dress",
+        "category": "fashion",
+        "price": 1499,
+        "stock": 70,
+        "image": "/products/dress.png",
+        "description": "Lightweight floral dress.",
+        "status": "hot"
+    },
+    {
+        "id": 8,
+        "name": "Running Shoes",
+        "category": "fashion",
+        "price": 2999,
+        "stock": 50,
+        "image": "/products/shoes.png",
+        "description": "Durable sports shoes.",
+        "status": "hot"
+    },
+    {
+        "id": 9,
+        "name": "Leather Wallet",
+        "category": "fashion",
+        "price": 799,
+        "stock": 120,
+        "image": "/products/wallet.png",
+        "description": "Premium leather wallet.",
+        "status": "new"
+    },
+    {
+        "id": 10,
+        "name": "Sunglasses UV Protection",
+        "category": "fashion",
+        "price": 599,
+        "stock": 80,
+        "image": "/products/sunglasses.png",
+        "description": "Stylish UV-protected glasses.",
+        "status": "sale"
+    },
+    {
+        "id": 11,
+        "name": "Washing Machine 7kg",
+        "category": "appliances",
+        "price": 13999,
+        "stock": 20,
+        "image": "/products/washing.png",
+        "description": "Efficient washing machine.",
+        "status": "sale"
+    },
+    {
+        "id": 12,
+        "name": "Microwave Oven 20L",
+        "category": "appliances",
+        "price": 7999,
+        "stock": 25,
+        "image": "/products/microwave.png",
+        "description": "Quick heating oven.",
+        "status": "hot"
+    },
+    {
+        "id": 13,
+        "name": "Air Conditioner 1.5 Ton",
+        "category": "appliances",
+        "price": 32999,
+        "stock": 10,
+        "image": "/products/ac.png",
+        "description": "Energy efficient cooling.",
+        "status": "hot"
+    },
+    {
+        "id": 14,
+        "name": "Electric Kettle",
+        "category": "appliances",
+        "price": 1499,
+        "stock": 60,
+        "image": "/products/kettle.png",
+        "description": "Fast boiling kettle.",
+        "status": "new"
+    },
+    {
+        "id": 15,
+        "name": "Ceiling Fan",
+        "category": "appliances",
+        "price": 2499,
+        "stock": 45,
+        "image": "/products/fan.png",
+        "description": "High-speed ceiling fan.",
+        "status": "sale"
+    },
+    {
+        "id": 16,
+        "name": "Double Door Refrigerator 260L",
+        "category": "refrigerators",
+        "price": 25999,
+        "stock": 15,
+        "image": "/products/fridge1.png",
+        "description": "Large storage fridge.",
+        "status": "hot"
+    },
+    {
+        "id": 17,
+        "name": "Single Door Refrigerator 190L",
+        "category": "refrigerators",
+        "price": 14999,
+        "stock": 25,
+        "image": "/products/fridge2.png",
+        "description": "Compact fridge.",
+        "status": "sale"
+    },
+    {
+        "id": 18,
+        "name": "Wooden Study Table",
+        "category": "furniture",
+        "price": 5999,
+        "stock": 20,
+        "image": "/products/table.png",
+        "description": "Durable wooden table.",
+        "status": "new"
+    },
+    {
+        "id": 19,
+        "name": "Office Chair Ergonomic",
+        "category": "furniture",
+        "price": 6999,
+        "stock": 30,
+        "image": "/products/chair.png",
+        "description": "Comfortable office chair.",
+        "status": "hot"
+    },
+    {
+        "id": 20,
+        "name": "Queen Size Bed",
+        "category": "furniture",
+        "price": 15999,
+        "stock": 10,
+        "image": "/products/bed.png",
+        "description": "Spacious bed.",
+        "status": "sale"
+    },
+    {
+        "id": 21,
+        "name": "Notebook Pack",
+        "category": "books",
+        "price": 499,
+        "stock": 100,
+        "image": "/products/notebook.png",
+        "description": "Set of notebooks.",
+        "status": "sale"
+    },
+    {
+        "id": 22,
+        "name": "Self Help Book",
+        "category": "books",
+        "price": 299,
+        "stock": 80,
+        "image": "/products/book.png",
+        "description": "Motivational reading.",
+        "status": "hot"
+    },
+    {
+        "id": 23,
+        "name": "Yoga Mat",
+        "category": "fitness",
+        "price": 899,
+        "stock": 70,
+        "image": "/products/yoga.png",
+        "description": "Anti-slip yoga mat.",
+        "status": "new"
+    },
+    {
+        "id": 24,
+        "name": "Dumbbell Set 10kg",
+        "category": "fitness",
+        "price": 1999,
+        "stock": 50,
+        "image": "/products/dumbbell.png",
+        "description": "Home workout set.",
+        "status": "hot"
+    },
+    {
+        "id": 25,
+        "name": "Baby Stroller",
+        "category": "baby",
+        "price": 4999,
+        "stock": 15,
+        "image": "/products/stroller.png",
+        "description": "Safe baby stroller.",
+        "status": "hot"
+    },
+    {
+        "id": 26,
+        "name": "Baby Feeding Bottle",
+        "category": "baby",
+        "price": 299,
+        "stock": 100,
+        "image": "/products/bottle.png",
+        "description": "BPA-free bottle.",
+        "status": "sale"
+    },
+    {
+        "id": 27,
+        "name": "Car Vacuum Cleaner",
+        "category": "automotive",
+        "price": 1499,
+        "stock": 40,
+        "image": "/products/vacuum.png",
+        "description": "Portable cleaner.",
+        "status": "new"
+    },
+    {
+        "id": 28,
+        "name": "Bike Helmet",
+        "category": "automotive",
+        "price": 1999,
+        "stock": 60,
+        "image": "/products/helmet.png",
+        "description": "Safety helmet.",
+        "status": "hot"
+    },
+    {
+        "id": 29,
+        "name": "LED Desk Lamp",
+        "category": "others",
+        "price": 799,
+        "stock": 90,
+        "image": "/products/lamp.png",
+        "description": "Energy-saving lamp.",
+        "status": "sale"
+    },
+    {
+        "id": 30,
+        "name": "Wall Clock",
+        "category": "others",
+        "price": 599,
+        "stock": 70,
+        "image": "/products/clock.png",
+        "description": "Modern wall clock.",
+        "status": "new"
+    },
+    {
+        "id": 100,
+        "name": "Travel Backpack",
+        "category": "travel",
+        "price": 2499,
+        "stock": 40,
+        "image": "/products/backpack.png",
+        "description": "Spacious travel bag.",
+        "status": "hot"
+    }
+]

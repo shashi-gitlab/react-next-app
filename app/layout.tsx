@@ -1,13 +1,37 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Providers from "./providers";
+
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-poppins",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
-  title: "Shopping Website",
-  description: "Shopping Website",
+ title: {
+    default: "MVCart | Quality Products",
+    template: "%s | MVCart", // Allows sub-pages to be "Cart | MVCart"
+  },
+  description: "Premium shopping experience for high-quality goods.",
+  metadataBase: new URL("https://mvwebtool.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mvwebtool.com",
+    siteName: "MVCart",
+  },
 };
 
 export default function RootLayout({
@@ -16,13 +40,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="font-poppins antialiased">
-        <TooltipProvider>
-          <Header></Header>
-          {children}
-          <Footer />
-        </TooltipProvider>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${poppins.variable} font-poppins antialiased min-h-screen flex flex-col`}>
+          <TooltipProvider>
+            <Header></Header>
+            <main className="flex-1">
+               <Providers>{children}</Providers>
+            </main>
+            <Footer />
+          </TooltipProvider>
       </body>
     </html>
   );
