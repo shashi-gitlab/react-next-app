@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "./providers";
+import { ReadingProgress } from "@/components/ReadingProgress";
 
 
 const poppins = Poppins({
@@ -20,7 +21,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
- title: {
+  title: {
     default: "MVCart | Quality Products",
     template: "%s | MVCart", // Allows sub-pages to be "Cart | MVCart"
   },
@@ -41,14 +42,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${poppins.variable} font-poppins antialiased min-h-screen flex flex-col`}>
-          <TooltipProvider>
-            <Header></Header>
+      <body className={`${poppins.variable} font-poppins antialiased min-h-screen flex flex-col bg-bgcolor`}>
+        <TooltipProvider>
+          <Providers>
+            <Header />
             <main className="flex-1">
-               <Providers>{children}</Providers>
+              {children}
             </main>
-            <Footer />
-          </TooltipProvider>
+          </Providers>
+          <Footer />
+        </TooltipProvider>
+        <ReadingProgress />
       </body>
     </html>
   );

@@ -18,7 +18,7 @@ export function ReadingProgress() {
     return (
         <div
             style={{ transform: `translateX(${completion - 100}%)` }}
-            className="fixed top-0 left-0 h-1 w-full bg-blue-600 transition-transform duration-150 z-50"
+            className="fixed top-0 left-0 h-1 w-full bg-linear-to-r from-purple-600 to-pink-500 transition-transform duration-150 z-50"
         />
     );
 }

@@ -10,7 +10,7 @@ export default function MobileMenu() {
     return (
         <>
             <button onClick={() => setIsSidebarOpen(prev => !prev)} ref={buttonRef}>
-                <AlignLeft  className='md:hidden text-darkColor hover:cursor-pointer hover:text-shop-light-green' />
+                <AlignLeft  className='md:hidden text-dark-color hover:cursor-pointer hover:text-light-green' />
             </button>
             <div className='md:hidden'>
                 <SideMenu

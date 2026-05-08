@@ -29,8 +29,7 @@ export default function BlogDetail({ params }: { params: { slug: string } }) {
 
     return (
         <Container>
-            <article className="pt-20 pb-16">
-                {/* 1. Header Section */}
+            {/* <article className="pt-20 pb-16">
                 <header className="px-6 text-center mb-12">
                     <Link href="/blog" className="text-blue-600 font-medium text-sm mb-4 inline-block">
                         ← Back to all posts
@@ -45,22 +44,16 @@ export default function BlogDetail({ params }: { params: { slug: string } }) {
                     </h1>
                 </header>
 
-                {/* 2. Featured Image */}
+                
                 <div className="px-6 mb-12">
                     <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                        {/* <Image
-                            src={post.image}
-                            alt={post.title}
-                            fill
-                            priority
-                            className="object-cover"
-                        /> */}
+                       
                         <SmartImage  src={post.image}
                             alt={post.title}/>
                     </div>
                 </div>
 
-                {/* 3. Article Content */}
+               
                 <div className="max-w-3xl mx-auto px-6">
                     <div className="prose prose-lg prose-slate max-w-none">
                         <p>
@@ -72,10 +65,10 @@ export default function BlogDetail({ params }: { params: { slug: string } }) {
                             Statistical data suggests that every 100ms of latency can cost up to 1% in conversions.
                             By shipping zero-bundle-size components, we bridge that gap.
                         </p>
-                        {/* Content ends here */}
+                      
                     </div>
 
-                    {/* 4. Tags & Sharing */}
+                   
                     <div className="mt-12 pt-8 border-t border-slate-200 flex flex-wrap gap-2">
                         {['NextJS', 'React', 'WebDev'].map(tag => (
                             <span key={tag} className="px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-600">
@@ -83,6 +76,33 @@ export default function BlogDetail({ params }: { params: { slug: string } }) {
                             </span>
                         ))}
                     </div>
+                </div>
+            </article> */}
+            <article className="pt-20 pb-16">
+                <div className="grid grid-cols-12 gap-6 items-start">
+                    <div className="col-span-12 md:col-span-8 space-y-6">
+                        <article className="bg-red-500 p-6">
+                            <h1 className="text-3xl font-bold mb-4">
+                                Article Title Here
+                            </h1>
+                            <p className="text-gray-700 mb-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <img src="/news-500x280-1.jpg" alt="Article Image" className="w-full h-auto mb-4 rounded" />
+                            <p className="text-gray-700 mb-4">
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+
+                        </article>
+
+
+                    </div>
+
+                    {/* SIDEBAR */}
+                    <aside className="col-span-12 md:col-span-4">
+                        {/* <Sidebar /> */}
+                    </aside>
+
                 </div>
             </article>
         </Container>

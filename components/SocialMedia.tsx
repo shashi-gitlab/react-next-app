@@ -40,7 +40,7 @@ export default function SocialMedia({className, iconClassName, tooltipClassName}
             {socialLink?.map((item)=>(
                 <Tooltip key={item.title}>
                     <TooltipTrigger className={"flex rounded-full group"}>
-                        <Link  target='_blank' rel='noopener noreferrer' href={item?.href} className={cn("p-2 border rounded-full hover:bg-shop-light-green hover:text-white   hoverEffect", iconClassName)}>
+                        <Link  target='_blank' rel='noopener noreferrer' href={item?.href} className={cn("p-2 border rounded-full hover:bg-purple hover:text-white hoverEffect", iconClassName)}>
                             {item?.icon}
                         </Link>
                     </TooltipTrigger>

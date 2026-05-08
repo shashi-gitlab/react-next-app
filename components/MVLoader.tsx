@@ -17,7 +17,7 @@ const MVLoader = ({
       role="status"
       aria-live="polite"
     >
-      <div className="flex items-center gap-2 text-shop-light-green bg-gray-100 px-4 py-3 rounded-lg">
+      <div className="flex items-center gap-2 text-purple bg-white px-4 py-3">
         <Loader2 className="w-5 h-5 animate-spin" />
         <span className="text-sm font-medium">{text}</span>
       </div>

@@ -28,11 +28,11 @@ const HomeTabBar = ({ selectedTab, onSelectTab, categories, loading }: HomeTabBa
         <div className="flex items-center gap-3 mt-2.5">
 
             {/* Left Arrow */}
-            <button onClick={() => scroll("left")} className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-shop-dark-green/90 group">
-                <CircleChevronLeft className="w-6 h-6 text-darkColor/50 group-hover:text-white" />
+            <button onClick={() => scroll("left")} className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-purple/90 shadow-md hover:bg-pink/90 group">
+                <CircleChevronLeft className="w-6 h-6 text-white" />
             </button>
             {loading && (
-                <Loader2 className="animate-spin text-shop-light-green" size={26} />
+                <Loader2 className="animate-spin text-pink" size={26} />
             )}
             {/* Scrollable Tabs */}
             <div
@@ -42,9 +42,9 @@ const HomeTabBar = ({ selectedTab, onSelectTab, categories, loading }: HomeTabBa
                 {categories.map((item) => (
                     <button
                         key={item?.slug}
-                        className={`whitespace-nowrap shrink-0 border border-shop-light-green/30 px-4 py-1.5 md:px-6 md:py-2 rounded-full hover:bg-shop-light-green hover:border-shop-light-green hover:text-white hoverEffect text-sm ${selectedTab === item.slug
-                            ? "bg-shop-light-green border-shop-light-green text-white"
-                            : "bg-shop-light-green/20"
+                        className={`whitespace-nowrap shrink-0 border border-pink/30 px-4 py-1.5 md:px-6 md:py-2 rounded-full hover:bg-purple hover:border-pink hover:text-white hoverEffect text-sm ${selectedTab === item.slug
+                            ? "bg-purple border-pink text-white"
+                            : "bg-purple/20"
                             }`}
                         onClick={() => onSelectTab?.(item?.slug)}
                     >
@@ -54,12 +54,12 @@ const HomeTabBar = ({ selectedTab, onSelectTab, categories, loading }: HomeTabBa
             </div>
 
             {/* Right Arrow */}
-            <button onClick={() => scroll("right")} className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-shop-dark-green/90 group">
-                <CircleChevronRight className="w-6 h-6 text-darkColor/50 group-hover:text-white" />
+            <button onClick={() => scroll("right")} className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full  bg-purple/90 shadow-md hover:bg-pink/90 group">
+                <CircleChevronRight className="w-6 h-6 text-white" />
             </button>
 
             {/* See All */}
-            <Link href="/shop" className="flex w-fit whitespace-nowrap shrink-0 border border-shop-light-green/30 px-4 py-1.5 md:px-6 md:py-2 rounded-full hover:bg-shop-light-green hover:border-shop-light-green hover:text-white hoverEffect text-sm">
+            <Link href="/shop" className="flex w-fit whitespace-nowrap shrink-0 border border-pink/30 px-4 py-1.5 md:px-6 md:py-2 rounded-full hover:bg-pink hover:border-pink hover:text-white hoverEffect text-sm">
                 See All
             </Link>
 

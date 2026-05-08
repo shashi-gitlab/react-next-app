@@ -51,7 +51,7 @@ export const ShopFilterBar = () => {
                 {categories && categories.map((cat: any) => {
                     const isActive = selected.includes(cat.slug);
                     return (
-                        <li key={cat?.slug} className={`flex items-center gap-2 px-3 py-2 hover:bg-shop-dark-green hover:text-white cursor-pointer transition ${isActive && 'bg-shop-dark-green text-white'}`}
+                        <li key={cat?.slug} className={`flex items-center gap-2 px-3 py-2 hover:bg-purple/90 hover:text-white cursor-pointer transition ${isActive && 'bg-purple text-white'}`}
                             onClick={() => handleClick(cat.slug)}>
                             {/* <input
                                 type="checkbox"

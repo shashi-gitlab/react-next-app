@@ -19,17 +19,17 @@ const SideMenu: FC<SideBarProps> = ({ isOpen, onClose, buttonRef  }) => {
     
     return (
         <div className={`fixed inset-y-0 h-screen left-0 z-50 w-full bg-black/50 shadow-xl ${isOpen ? 'translate-x-0' : "-translate-x-full"} hoverEffect`}>
-            <div ref={sidebarRef} className='min-w-72 max-w-96 bg-white h-screen border-r border-r-shop-light-green flex flex-col gap-4 text-lightColor'>
+            <div ref={sidebarRef} className='min-w-72 max-w-96 bg-white h-screen border-r border-r-light-green flex flex-col gap-4 text-light-color'>
                 <div className='flex items-center justify-between p-4 border-b'>
                     <Logo className='hoverEffect group' />
-                    <button className='hover:text-shop-light-green' onClick={onClose}>
+                    <button className='hover:text-light-green' onClick={onClose}>
                         <X />
                     </button>
                 </div>
                 <div className='flex-1 flex flex-col justify-between overflow-y-auto'>
                     <ul className='gap-1'>
                         {headerData?.map((item) => (
-                            <li key={item?.title} className={`px-4 py-1 hover:text-shop-light-green hover:font-semibold hover:cursor-pointer hover:border  ${pathName === item?.href && "bg-shop-dark-green text-white"}`}>
+                            <li key={item?.title} className={`px-4 py-1 hover:text-light-green hover:font-semibold hover:cursor-pointer hover:border  ${pathName === item?.href && "bg-dark-green text-white"}`}>
                                 <Link href={item?.href} className={`hoverEffect relative group`} onClick={onClose}> 
                                     {item?.title}
                                 </Link>

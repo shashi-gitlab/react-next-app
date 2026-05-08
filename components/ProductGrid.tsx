@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useMemo } from "react";
-import HomeTabBar from "./HomeTabBar";
+import HomeTabBar from "./home/HomeTabBar";
 import ProductCard from "./ProductCard";
 import MVLoader from "./MVLoader";
 import NoProductAvailable from "./NoProductAvailable";

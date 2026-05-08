@@ -6,17 +6,23 @@
 
 @theme{
   --font-poppins: "Poppins", sans-serif;
-  --color-shop-light-pink: #fcf0e4;
-  --color-shop-dark-green: #063c28;
-  --color-shop-btn-dark-green: #063d29;
-  --color-shop-light-bg: #f6f6f6;
-  --color-shop-light-green: #3b9c3c;
-  --color-shop-orange: #fb6c08;
-  --color-darkColor: #151515;
-  --color-lightColor: #52525b;
-  --color-lightOrange: #fca99b;
+  --color-bgcolor: #F5F3FF;
+  --color-purple: #6D28D9;
+  --color-golden: #F59E0B;;
+  --color-pink: #EC4899;
+  --color-light-purple: #a78bfa;
+  --color-light-blue: #38BDF8;
+  --color-light-pink: #FCF0E4;
+  --color-dark-green: #063c28;
+  --color-light-green: #3b9c3c;
+  --color-btn-dark-green: #063d29;
+  --color-light-bg: #f6f6f6;
+  --color-orange: #fb6c08;
+  --color-light-orange: #fca99b;
+  --color-dark-color: #151515;
+  --color-light-color: #52525b;
   --color-dark-blue: #6c7fd8;
-  --color-shop-light-text: #686e7d;
+  --color-light-text: #686e7d;
 }
 
 :root {
@@ -147,3 +153,11 @@
     @apply hover:cursor-pointer;
   }
 }
+
+.gradientBackground {
+  @apply bg-linear-to-r from-pink to-purple text-white;
+}
+.gradientText {
+  @apply bg-linear-to-r from-pink to-purple bg-clip-text text-transparent;
+}
+

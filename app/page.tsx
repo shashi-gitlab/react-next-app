@@ -1,7 +1,7 @@
 import { Container } from "@/components/Container";
-import HomeBanner from "@/components/HomeBanner";
-import { HomeBrands } from "@/components/HomeBrands";
-import { HomeCategories } from "@/components/HomeCategories";
+import HomeBanner from "@/components/home/HomeBanner";
+import { HomeBrands } from "@/components/home/HomeBrands";
+import { HomeCategories } from "@/components/home/HomeCategories";
 import { LatestBlog } from "@/components/blog/LatestBlog";
 import ProductGrid from "@/components/ProductGrid";
 import { Metadata } from "next";

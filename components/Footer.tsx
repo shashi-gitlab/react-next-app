@@ -20,18 +20,18 @@ const Footer = () => {
             <SubText>
               Discover curated furniture collections at Shopcart, blending style and comfort to elevate your living spaces.
             </SubText>
-            <SocialMedia className='text-darkColor/50' iconClassName='border-darkColor/50 hover:border-shop-light-green hover:text-white'
-              tooltipClassName='bg-darkColor text-white' />
+            <SocialMedia className='text-dark-color/50' iconClassName='border-dark-color/50 hover:border-light-green hover:text-white'
+              tooltipClassName='bg-dark-color text-white' />
           </div>
           <div className='space-y-4'>
-            <SubTitle>Quick Links</SubTitle>
+            <SubTitle className='text-purple'>Quick Links</SubTitle>
             <ul className='space-y-1 mt-4' >
               {
                 quickLinksData.map((item, index) => (
                   <li key={index}>
                   <Link
                     href={item.href}
-                    className='text-sm font-medium text-gray-600 hover:text-shop-light-green transition-colors hoverEffect'
+                    className='text-sm font-medium text-gray-600 hover:text-light-green transition-colors hoverEffect'
                   >
                     {item.title}
                   </Link>
@@ -40,14 +40,14 @@ const Footer = () => {
             </ul>
           </div>
           <div className='space-y-4'>
-            <SubTitle>Categories</SubTitle>
+            <SubTitle className='text-purple'>Categories</SubTitle>
             <ul className='space-y-1 mt-4' >
               {
                 categoriesData.map((item, index) => (
                   <li key={index}>
                   <Link
                     href={item.href}
-                    className='text-sm font-medium text-gray-600 hover:text-shop-light-green transition-colors hoverEffect'
+                    className='text-sm font-medium text-gray-600 hover:text-light-green transition-colors hoverEffect'
                   >
                     {item.title}
                   </Link>
@@ -56,13 +56,13 @@ const Footer = () => {
             </ul>
           </div>
           <div className='space-y-4'>
-            <SubTitle>Newsletter</SubTitle>
+            <SubTitle className='text-purple'>Newsletter</SubTitle>
             <SubText>
               Subscribe to our newsletter to receive updates and exclusive offers.
             </SubText>
             <form className="space-y-3">
-              <Input type='email' placeholder='Enter your email' className='w-full px-4 py-5 text-2xl' />
-              <Button className={'w-full bg-gray-900 text-white'} size={'lg'}>Subscribe</Button>
+              <Input type='email' placeholder='Enter your email' className='w-full px-4 py-5 rounded-none text-sm' />
+              <Button className={'w-full bg-pink/70 text-white hover:bg-pink rounded-none'} size={'lg'}>Subscribe</Button>
             </form>
           </div>
         </div>

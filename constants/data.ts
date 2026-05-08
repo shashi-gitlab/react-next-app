@@ -1,9 +1,12 @@
+import { Product } from "@/app/types/product";
+
 export const headerData = [
     { title: "Home", href: "/" },
     { title: "Shop", href: "/shop" },
+    { title: "Hot Deal", href: "/hot-deals" },
     { title: "Blog", href: "/blog" },
+    { title: "About", href: "/about" },
     { title: "Contact", href: "/contact" },
-    { title: "Hot Deal", href: "/deal" }
 ];
 
 export const quickLinksData = [
@@ -223,3 +226,146 @@ export const posts = [
       "author": "Neha Gupta"
     }
 ];
+
+export const hotDeals:Product[] = [
+  {
+    "id": 1,
+    "title": "Wireless Bluetooth Earbuds",
+    "category": "gadgets",
+    "price": 1999,
+    "stock": 50,
+    "image": "/products/earbud.png",
+    "description": "High-quality wireless earbuds with noise cancellation.",
+    "status": "hot"
+  },
+  {
+    "id": 2,
+    "title": "Smart Watch Series 7",
+    "category": "gadgets",
+    "price": 4999,
+    "stock": 30,
+    "image": "/products/smartwatch.png",
+    "description": "Track your fitness, calls, and notifications on the go.",
+    "status": "hot"
+  },
+  {
+    "id": 3,
+    "title": "Nikon Camera",
+    "category": "gadgets",
+    "price": 4999,
+    "stock": 30,
+    "image": "/products/camera.png",
+    "description": "Capture stunning photos with this high-resolution Nikon camera.",
+    "status": "hot"
+  },
+  {
+    "id": 4,
+    "title": "wireless headphones Series 7",
+    "category": "gadgets",
+    "price": 4999,
+    "stock": 30,
+    "image": "/products/headphone2.png",
+    "description": "High-quality wireless headphones with noise cancellation.",
+    "status": "hot"
+  },
+  {
+    "id": 5,
+    "title": "Bluetooth soundbox Series 7",
+    "category": "gadgets",
+    "price": 4999,
+    "stock": 30,
+    "image": "/products/bluetooth.jpg",
+    "description": "High-quality wireless soundbox with noise cancellation.",
+    "status": "hot"
+  },
+  {
+    "id": 6,
+    "title": "Wireless Bluetooth Series 7",
+    "category": "gadgets",
+    "price": 4999,
+    "stock": 30,
+    "image": "/products/bluetooth-2.png",
+    "description": "High-quality wireless soundbox with noise cancellation.",
+    "status": "hot"
+  },
+  {
+    "id": 7,
+    "title": "Washing Machine 7.5 Kg",
+    "category": "appliances",
+    "price": 8999,
+    "stock": 20,
+    "image": "/products/washing.png",
+    "description": "7.5 Kg washing machine with multiple wash cycles.",
+    "status": "hot"
+  },
+  {
+    "id": 8,
+    "title": "Tv 32 inch Full HD",
+    "category": "appliances",
+    "price": 32999,
+    "stock": 10,
+    "image": "/products/tv.png",
+    "description": "32 inch Full HD Smart TV with vibrant colors.",
+    "status": "hot"
+  },
+  {
+    "id": 9,
+    "title": "Fruit juce mixer",
+    "category": "appliances",
+    "price": 32999,
+    "stock": 10,
+    "image": "/products/juce-mixer.png",
+    "description": "High-speed juicer mixer for fresh and healthy juices.",
+    "status": "hot"
+  },
+  {
+    "id": 10,
+    "title": "Double Door Refrigerator 260L",
+    "category": "refrigerators",
+    "price": 25999,
+    "stock": 15,
+    "image": "/products/fridge1.png",
+    "description": "Frost-free double door refrigerator with large storage.",
+    "status": "hot"
+  },
+  {
+    "id": 11,
+    "title": "Single Door Refrigerator 190L",
+    "category": "refrigerators",
+    "price": 14999,
+    "stock": 25,
+    "image": "/products/fridge2.png",
+    "description": "Compact and energy-saving refrigerator for small families.",
+    "status": "hot"
+  },
+  {
+    "id": 12,
+    "title": "Mixer Grinder 3 in 1",
+    "category": "others",
+    "price": 4999,
+    "stock": 40,
+    "image": "/products/mixer.png",
+    "description": "3 in 1 mixer grinder with powerful motor and multiple jars.",
+    "status": "hot"
+  },
+  {
+    "id": 13,
+    "title": "Office fan Ergonomic",
+    "category": "others",
+    "price": 6999,
+    "stock": 35,
+    "image": "/products/fan.png",
+    "description": "Ergonomic office fan with lumbar support.",
+    "status": "hot"
+  },
+  {
+    "id": 14,
+    "title": "Wireless Headphones",
+    "category": "others",
+    "price": 6999,
+    "stock": 35,
+    "image": "/products/headphone.png",
+    "description": "High-quality wireless headphones with noise cancellation.",
+    "status": "hot"
+  }
+]

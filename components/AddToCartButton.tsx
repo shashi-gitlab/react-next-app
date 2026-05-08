@@ -1,57 +1,51 @@
-"use client";
-
-import { Product } from '@/app/types/product'
-import React, { useState } from 'react'
+import { Product } from '@/app/types/product';
 import { Button } from './ui/button'
-import { MinusIcon, PlusIcon, ShoppingBag } from 'lucide-react'
+import { ShoppingBag } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Input } from './ui/input'
 import { PriceFormatter } from './PriceFormatter'
-
+import { RootState } from '@/app/store/store';
+import { addToCart, decreaseQuantity } from '@/app/store/cartSlice';
+import { CartCounter } from './shop/CartCounter';
+import { useAppSelector, useAppDispatch } from '@/app/hooks';
 interface Props {
     product: Product,
     className?: string
 }
 
 export const AddToCartButton = ({ product, className }: Props) => {
+    const dispatch = useAppDispatch();
+
+    const cartItem = useAppSelector((state) => 
+        state.cart.items.find((item) => item.id === product.id)
+    );
+    
+    const currentQuantity = cartItem ? cartItem.quantity : 0;
+
     const isOutOfStock = product?.stock === 0;
-    const [quantity, setQuantity] = useState(0);
-
+    
     const handleAddToCart = () => {
-        setQuantity(1);
-    }
-
-    const handleOnMinusClick = (q: number) => {
-        if (q === 0) return;
-        setQuantity(q - 1);
-    }
-    const handleOnPlusClick = (q: number) => {
-        setQuantity(q + 1);
+        dispatch(addToCart(product)); 
     }
 
     return (
         <div>
             {
-                quantity > 0 ? <>
-                    <div className='flex justify-between items-center gap-2.5 border-b'>
-                        <p className='text-xs text-shop-light-text font-medium'>Quantity</p>
-                        <div className='flex items-center py-0.5'>
-                            <Button size={'xs'} className={'h-6 w-6'} variant={'secondary'} onClick={() => handleOnMinusClick(quantity)}><MinusIcon className='font-semibold' /></Button>
-                            <span className='px-1 font-semibold'>{quantity}</span>
-                            <Button size={'xs'} variant={'secondary'} className={'h-6 w-6'} onClick={() => handleOnPlusClick(quantity)}><PlusIcon size={55} /></Button>
-                        </div>
+                currentQuantity > 0 ? <>
+                    <div className='flex justify-between items-center gap-2.5 border-b pb-0.5'>
+                        <p className='text-xs text-light-text font-medium'>Quantity</p>
+                        <CartCounter item={product} quantity={currentQuantity}  addToCart={() => dispatch(addToCart(product))} decreaseQuantity={()=> dispatch(decreaseQuantity(product.id))}/>
                     </div>
                     <div className='flex items-center justify-between gap-2.5 py-0.5'>
-                        <p className='text-xs text-darkColor font-semibold'>Subtotal</p>
-                        <p className='text-xs text-darkColor font-semibold'>
-                            <PriceFormatter amount={product?.price} />
+                        <p className='text-xs text-pink font-semibold'>Subtotal</p>
+                        <p className='text-xs text-purple font-semibold'>
+                            <PriceFormatter amount={(product?.price) * currentQuantity} className='text-purple' />
                         </p>
                     </div>
                 </> : (
                     <Button
-                        onClick={handleAddToCart}
+                        onClick={(handleAddToCart)}
                         disabled={isOutOfStock}
-                        className={cn("w-full bg-shop-dark-green/80 text-shop-light-bg shadow-none border border-shop-dark-green/80 font-semibold tracking-wide hover:text-white hover:bg-shop-dark-green hover:border-shop-dark-green hoverEffect", className)}>
+                        className={cn("w-full bg-purple/80 text-light-bg shadow-none border border-purple/80 font-semibold tracking-wide hover:text-white hover:bg-purple hover:border-purple hoverEffect", className)}>
                         <ShoppingBag />{isOutOfStock ? "Out of Stock" : "Add to Cart"}
                     </Button>
                 )

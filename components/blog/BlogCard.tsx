@@ -19,10 +19,10 @@ export default function BlogCard({ post }: { post: BlogPost }) {
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 
             {/* Image */}
-            <div className="relative w-full h-40 flex flex-col items-center justify-center bg-shop-light-bg">
+            <div className="relative w-full h-40 flex flex-col items-center justify-center bg-light-bg">
                 {loading && post?.image && (
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
-                        <Loader2 className="animate-spin text-gray-400" size={26} />
+                        <Loader2 className="animate-spin text-purple" size={26} />
                     </div>
                 )}
 
@@ -53,19 +53,19 @@ export default function BlogCard({ post }: { post: BlogPost }) {
             <div className="p-5 flex flex-col gap-2">
                 <div className="text-xs flex items-center gap-5 justify-between">
                     <div className="flex items-center gap-1 relative group cursor-pointer text-xs">
-                        <p className="font-semibold text-shop-dark-green/50 tracking-wide group-hover:text-shop-light-green">{post?.category}</p>
-                        <span className='absolute left-0 -bottom-1.5 bg-lightColor/30 inline-block w-full h-0.5 group-hover:bg-shop-light-green hoverEffect' />
+                        <p className="font-semibold text-purple/50 tracking-wide group-hover:text-pink">{post?.category}</p>
+                        <span className='absolute left-0 -bottom-1.5 bg-light-color/30 inline-block w-full h-0.5 group-hover:bg-pink hoverEffect' />
                     </div>
                     <div className='relative group'>
-                        <p className='flex items-center gap-1 cursor-pointer text-xs text-shop-dark-green/50 group-hover:text-shop-light-green tracking-wide'>
+                        <p className='flex items-center gap-1 cursor-pointer text-xs text-purple/50 group-hover:text-pink tracking-wide'>
                             <Calendar size={15} />{" "}
                             {post?.date}
                         </p>
-                        <span className='absolute left-0 -bottom-1.5 bg-lightColor/30 inline-block w-full h-0.5 group-hover:bg-shop-light-green hoverEffect' />
+                        <span className='absolute left-0 -bottom-1.5 bg-light-color/30 inline-block w-full h-0.5 group-hover:bg-pink hoverEffect' />
                     </div>
                 </div>
                 <Link href={`/blog/${post.slug}`}>
-                    <Title className="text-md mt-2 line-clamp-1 hover:text-shop-light-green">
+                    <Title className="text-md mt-2 line-clamp-1 hover:text-pink">
                         {post.title}
                     </Title>
                 </Link>
@@ -74,7 +74,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
                     {post.excerpt}
                 </p>
 
-                <Link href={`/blog/${post.slug}`} className="text-shop-light-green text-xs hover:underline text-right">
+                <Link href={`/blog/${post.slug}`} className="text-pink text-xs hover:underline text-right">
                     Read More →
                 </Link>
             </div>

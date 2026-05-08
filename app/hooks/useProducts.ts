@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 const fetchProductsByCategory = async ({ pageParam = 0, queryKey }: { pageParam: number; queryKey: (string | undefined)[] }) => {
   const [, category] = queryKey;
@@ -23,5 +23,24 @@ export const useProducts = (category: string) => {
       const loaded = allPages.length * 10;
       return lastPage?.products?.length ? loaded : undefined;
     },
+  });
+};
+
+
+const fetchProductDetails = async (id: string) => {
+  const res = await fetch(`/api/products/${id}`);
+  if (!res.ok) {
+    throw new Error(
+      "Failed to fetch product details"
+    );
+  }
+  return res.json();
+};
+
+export const useProductDetails = (id: string) => {
+  return useQuery({
+    queryKey: ["product", id],
+    queryFn: () => fetchProductDetails(id),
+    enabled: !!id
   });
 };

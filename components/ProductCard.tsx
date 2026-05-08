@@ -1,5 +1,5 @@
 "use client";
-import { Flame, ImageOff, Loader2, StarIcon } from 'lucide-react';
+import { Flame, ImageOff, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -8,6 +8,7 @@ import { Product } from '@/app/types/product';
 import { Title } from './ui/text';
 import { PriceView } from './PriceView';
 import { AddToCartButton } from './AddToCartButton';
+import RatingStars from './RatingStars';
 
 
 const ProductCard = ({ product }: { product: Product }) => {
@@ -19,16 +20,18 @@ const ProductCard = ({ product }: { product: Product }) => {
     setImgError(false);
   }, [product?.images]);
 
+  console.log("product", product);
+
   return (
     <div className='text-sm border border-gray-200 rounded-lg bg-white group'>
 
       {/* Image */}
-      <div className="relative w-full h-64 bg-shop-light-bg overflow-hidden rounded-t-lg flex items-center justify-center">
+      <div className="relative w-full h-40 bg-light-bg overflow-hidden rounded-t-lg flex items-center justify-center">
 
         {/* Loader (lightweight) */}
         {loading && product?.images && (
           <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
-            <Loader2 className="animate-spin text-gray-400" size={26} />
+            <Loader2 className="animate-spin text-purple" size={26} />
           </div>
         )}
 
@@ -57,20 +60,21 @@ const ProductCard = ({ product }: { product: Product }) => {
         <WishlistButton product={product} className='' />
         {
           product?.status === "sale" && (
-            <div className='absolute top-2 left-2 z-10 text-xs border border-darkColor/50 px-2 py-0.5 rounded-full group-hover:border-shop-light-green group-hover:text-shop-light-green hoverEffect'>Sale</div>
+            <div className='absolute top-2 left-2 z-10 text-xs border border-dark-color/50 px-2 py-0.5 rounded-full group-hover:border-light-green group-hover:text-light-green hoverEffect'>Sale</div>
           )
         }
         {
           product?.status === "new" && (
-            <div className='absolute top-2 left-2 z-10 text-xs border border-darkColor/50 px-2 py-0.5 rounded-full group-hover:border-shop-light-green group-hover:text-shop-light-green hoverEffect'>New Arrival</div>
+            <div className='absolute top-2 left-2 z-10 text-xs border border-dark-color/50 px-2 py-0.5 rounded-full group-hover:border-light-green group-hover:text-light-green hoverEffect'>New Arrival</div>
           )
         }
         {
           product?.status === "hot" && (
-            <Link href="/deal" className='absolute top-2 left-2 z-10 text-xs border border-shop-orange/50 p-1 rounded-full group-hover:border-shop-orange group-hover:text-shop-dark-green hoverEffect'>
-              <Flame
+            <Link href="/deal" className='absolute top-2 left-2 z-10 text-xs border border-orange/50 p-1 rounded-full group-hover:border-orange group-hover:text-dark-green hoverEffect'>
+              {/* <Flame
                 size={18}
-                className='text-shop-orange/50 group-hover:text-shop-orange hoverEffect' />
+                className='text-orange/50 group-hover:text-orange hoverEffect' /> */}
+                <span className="text-xl opacity-50 group-hover:opacity-100">🔥</span>
             </Link>
           )
         }
@@ -78,30 +82,17 @@ const ProductCard = ({ product }: { product: Product }) => {
 
       {/* Info */}
       <div className='p-3 flex flex-col gap-2'>
-        <p className='uppercase line-clamp-1 text-xs text-shop-light-text'>{product?.category}</p>
+          <p className='uppercase line-clamp-1 text-xs text-light-text'>{product?.category}</p>
         
-        <Title className='text-sm line-clamp-1 '>{product?.title}</Title>
+        <Link href={'/product/' + product?.title} >
+          <Title className='text-sm line-clamp-1 hover:text-pink'>{product?.title}</Title>
+        </Link>
         
-        <div className='flex items-center gap-2'>
-          <div className='flex items-center gap-0.5'>
-            {
-                [...Array(5)].map((_,index)=>(
-                    <StarIcon 
-                      key={index}
-                      size={12}
-                      className={
-                      index < 4 ? "text-shop-light-green":"text-shop-light-text"
-                      } 
-                      fill={index < 4 ? "text-shop-light-green":"bg-white"}
-                    />
-                ))
-              }
-          </div>
-          <p className='text-shop-light-text text-xs tracking-wide'>5 Reviews</p>
-        </div>
+        <RatingStars showReviewText showRatingText={false} rating={product?.rating ?? 0} reviewCount={product?.reviews? product?.reviews.length : 0}/>
+
         <div className='flex items-center gap-2.5'>
-            <p className='font-medium'>In Stocks</p>
-            <p className={`${product?.stock === 0 ? "text-red-600" : "text-shop-light-green/80"} font-semibold`}>{ (product?.stock as number) > 0 ? product?.stock : "unavailable"}</p>
+            <p className='font-medium text-purple'>In Stocks</p>
+            <p className={`${product?.stock === 0 ? "text-red-600" : "text-pink/80"} font-semibold`}>{ (product?.stock as number) > 0 ? product?.stock : "unavailable"}</p>
         </div>
         <PriceView 
           price={product?.price}
