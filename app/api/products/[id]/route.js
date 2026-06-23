@@ -2,7 +2,7 @@ export async function GET(
     request,
     { params }
 ) {
-    const id = params?.id;
+    const { id } = await params;
 
     if (!id) {
         return Response.json(
@@ -24,8 +24,7 @@ export async function GET(
         if (!res.ok) {
             return Response.json(
                 {
-                    error:
-                        "Failed to fetch product",
+                    error: "Failed to fetch product",
                 },
                 { status: res.status }
             );
@@ -39,8 +38,7 @@ export async function GET(
 
         return Response.json(
             {
-                error:
-                    "Internal Server Error",
+                error: "Internal Server Error",
             },
             { status: 500 }
         );

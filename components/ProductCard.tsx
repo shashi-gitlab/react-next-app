@@ -20,8 +20,6 @@ const ProductCard = ({ product }: { product: Product }) => {
     setImgError(false);
   }, [product?.images]);
 
-  console.log("product", product);
-
   return (
     <div className='text-sm border border-gray-200 rounded-lg bg-white group'>
 
@@ -84,19 +82,18 @@ const ProductCard = ({ product }: { product: Product }) => {
       <div className='p-3 flex flex-col gap-2'>
           <p className='uppercase line-clamp-1 text-xs text-light-text'>{product?.category}</p>
         
-        <Link href={'/product/' + product?.title} >
-          <Title className='text-sm line-clamp-1 hover:text-pink'>{product?.title}</Title>
+        <Link href={'/product/' + product?.id} >
+          <Title className='text-sm line-clamp-1 hover:text-secondary-color'>{product?.title}</Title>
         </Link>
         
         <RatingStars showReviewText showRatingText={false} rating={product?.rating ?? 0} reviewCount={product?.reviews? product?.reviews.length : 0}/>
 
         <div className='flex items-center gap-2.5'>
-            <p className='font-medium text-purple'>In Stocks</p>
-            <p className={`${product?.stock === 0 ? "text-red-600" : "text-pink/80"} font-semibold`}>{ (product?.stock as number) > 0 ? product?.stock : "unavailable"}</p>
+            <p className='font-medium text-primary-color'>In Stocks</p>
+            <p className={`${product?.stock === 0 ? "text-red-600" : "text-secondary-color/80"} font-semibold`}>{ (product?.stock as number) > 0 ? product?.stock : "unavailable"}</p>
         </div>
         <PriceView 
-          price={product?.price}
-          discount={product?.discountPercentage}
+          product={product}
           className="text-sm"
         />
 

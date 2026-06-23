@@ -63,7 +63,7 @@ export default function ContactPage() {
         </div>
 
         {/* RIGHT SECTION - FORM */}
-        <div className="bg-white border shadow shadow-dark-green p-8">
+        <div className="bg-white border border-primary-color shadow p-8">
           <Title className="text-2xl font-semibold mb-6">Send a Message</Title>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -115,7 +115,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-dark-green text-white py-2 hover:bg-light-green transition"
+              className="w-full bg-primary-color/80 text-white py-2 hover:bg-primary-color transition"
             >
               {loading ? "Sending..." : "Send Message"}
             </button>

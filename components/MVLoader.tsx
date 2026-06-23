@@ -1,4 +1,5 @@
 import { Loader2 } from "lucide-react";
+import Logo from "./Logo";
 
 type MVLoaderProps = {
   text?: string;
@@ -17,9 +18,12 @@ const MVLoader = ({
       role="status"
       aria-live="polite"
     >
-      <div className="flex items-center gap-2 text-purple bg-white px-4 py-3">
-        <Loader2 className="w-5 h-5 animate-spin" />
-        <span className="text-sm font-medium">{text}</span>
+      <div className="flex flex-col justify-center items-center gap-2 text-purple bg-white px-4 py-3">
+        <Logo />
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium">{text}</span>
+          <Loader2 className="w-5 h-5 animate-spin" />
+        </div>
       </div>
     </div>
   );

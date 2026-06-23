@@ -53,7 +53,7 @@ export const ShopGrid = () => {
                         ))}
                     </div>
 
-                    {/* 👇 Observer trigger */}
+                    
                     <div ref={loadMoreRef} className="h-20 w-full flex items-center justify-center">
                         {isFetchingNextPage && <MVLoader />}
                     </div>

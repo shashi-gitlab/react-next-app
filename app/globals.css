@@ -23,6 +23,8 @@
   --color-light-color: #52525b;
   --color-dark-blue: #6c7fd8;
   --color-light-text: #686e7d;
+  --color-primary-color: #6D28D9;
+  --color-secondary-color: #EC4899;
 }
 
 :root {
@@ -159,5 +161,8 @@
 }
 .gradientText {
   @apply bg-linear-to-r from-pink to-purple bg-clip-text text-transparent;
+}
+.gradientBackground:hover {
+  @apply bg-linear-to-r from-purple to-pink text-white;
 }
 

@@ -1,11 +1,10 @@
 // app/blog/[slug]/page.tsx
 import { Container } from '@/components/Container';
-import SmartImage from '@/components/SmartImage';
-import Image from 'next/image';
+import SafeImage from '@/components/SafeImage';
 import Link from 'next/link';
 
 const post = {
-    title: "The Future of React Server Components",
+    title: "The Future of React Server Components ",
     date: "April 28, 2026",
     author: "Jane Doe",
     readingTime: "6 min read",
@@ -29,56 +28,20 @@ export default function BlogDetail({ params }: { params: { slug: string } }) {
 
     return (
         <Container>
-            {/* <article className="pt-20 pb-16">
-                <header className="px-6 text-center mb-12">
-                    <Link href="/blog" className="text-blue-600 font-medium text-sm mb-4 inline-block">
-                        ← Back to all posts
-                    </Link>
-                    <div className="flex justify-center items-center gap-3 text-slate-500 text-sm mb-4">
-                        <span>{post.date}</span>
-                        <span>•</span>
-                        <span>{post.readingTime}</span>
+            <article className="pt-10 pb-10">
+                <header className="text-center mb-12">
+                    <div className="flex justify-between items-center mb-4">
+                        <Link href="/blog" className="text-blue-600 font-bold text-sm inline-block">
+                            ← Back
+                        </Link>
+                        <div className="flex justify-center items-center gap-3 text-slate-500 text-sm">
+                            <span>{post.date}</span>
+                        </div>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
                         {post.title}
                     </h1>
                 </header>
-
-                
-                <div className="px-6 mb-12">
-                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                       
-                        <SmartImage  src={post.image}
-                            alt={post.title}/>
-                    </div>
-                </div>
-
-               
-                <div className="max-w-3xl mx-auto px-6">
-                    <div className="prose prose-lg prose-slate max-w-none">
-                        <p>
-                            The landscape of web development is shifting. With the advent of Server Components,
-                            we are moving back to a world where the server does the heavy lifting...
-                        </p>
-                        <h2>Why Performance Matters</h2>
-                        <p>
-                            Statistical data suggests that every 100ms of latency can cost up to 1% in conversions.
-                            By shipping zero-bundle-size components, we bridge that gap.
-                        </p>
-                      
-                    </div>
-
-                   
-                    <div className="mt-12 pt-8 border-t border-slate-200 flex flex-wrap gap-2">
-                        {['NextJS', 'React', 'WebDev'].map(tag => (
-                            <span key={tag} className="px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-600">
-                                #{tag}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </article> */}
-            <article className="pt-20 pb-16">
                 <div className="grid grid-cols-12 gap-6 items-start">
                     <div className="col-span-12 md:col-span-8 space-y-6">
                         <article className="bg-red-500 p-6">
@@ -100,7 +63,29 @@ export default function BlogDetail({ params }: { params: { slug: string } }) {
 
                     {/* SIDEBAR */}
                     <aside className="col-span-12 md:col-span-4">
-                        {/* <Sidebar /> */}
+                        <div className="space-y-3">
+                            <h2 className="text-lg font-bold">
+                                Hot Deal Section
+                            </h2>
+
+                            <div className='space-y-2'>
+
+                                {[...Array(6)]?.map((cate, index) => (
+
+                                    <div key={`cat` + cate + index} className='bg-white p-4 flex  group items-center'>
+                                        <SafeImage src={"https://dummyjson.com/image/150"} alt=''
+                                            width={80}
+                                            height={80}
+                                            className='mr-3 bg-light-text group-hover:scale-105'
+                                        />
+                                        <div>
+                                            <h3 className='font-medium'>Category-{cate}</h3>
+                                            <p className='text-sm text-muted-foreground'>(2) items Available</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </aside>
 
                 </div>

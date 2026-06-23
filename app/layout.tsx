@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "./providers";
@@ -43,15 +42,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${poppins.variable} font-poppins antialiased min-h-screen flex flex-col bg-bgcolor`}>
-        <TooltipProvider>
-          <Providers>
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-          </Providers>
-          <Footer />
-        </TooltipProvider>
+        <Providers>
+          <Header />
+          <main className="flex-1">
+            {children}
+          </main>
+        </Providers>
+        <Footer />
         <ReadingProgress />
       </body>
     </html>

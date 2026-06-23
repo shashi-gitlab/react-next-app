@@ -30,8 +30,8 @@ const NoProductAvailable = () => {
             </div>
             {/* Action Button */}
             <div className='space-x-2 flex items-center text-blue-500'>
-                <Loader2 className="w-5 h-5 animate-spin" />
                 <span>We&apos;re restoring shortly.....</span>
+                <Loader2 className="w-5 h-5 animate-spin" />
             </div>
         </div>
     );

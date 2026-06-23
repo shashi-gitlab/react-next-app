@@ -62,7 +62,7 @@ const Footer = () => {
             </SubText>
             <form className="space-y-3">
               <Input type='email' placeholder='Enter your email' className='w-full px-4 py-5 rounded-none text-sm' />
-              <Button className={'w-full bg-pink/70 text-white hover:bg-pink rounded-none'} size={'lg'}>Subscribe</Button>
+              <Button className={'w-full bg-primary-color/70 text-white hover:bg-primary-color rounded-none'} size={'lg'}>Subscribe</Button>
             </form>
           </div>
         </div>

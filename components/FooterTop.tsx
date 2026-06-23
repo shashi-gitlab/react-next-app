@@ -40,7 +40,7 @@ const data:ContactItemData[] = [
 
 const FooterTop = () => {
   return (
-    <div className='grid grid-cols-2 lg:grid-cols-4 gap-8 border-b'>
+    <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 border-b'>
         {data.map((item,index) => (
             <div key={index} className='flex items-center gap-3 group hover:bg-gray-50 py-4 transition-colors hoverEffect'>
                 <span className='text-pink/70'>{item.icon}</span>

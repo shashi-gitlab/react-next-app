@@ -10,9 +10,10 @@ import { useAppSelector, useAppDispatch } from '@/app/hooks';
 interface Props {
     product: Product,
     className?: string
+    buttonSize?: "default" | "sm" | "lg"
 }
 
-export const AddToCartButton = ({ product, className }: Props) => {
+export const AddToCartButton = ({ product, className, buttonSize }: Props) => {
     const dispatch = useAppDispatch();
 
     const cartItem = useAppSelector((state) => 
@@ -27,6 +28,8 @@ export const AddToCartButton = ({ product, className }: Props) => {
         dispatch(addToCart(product)); 
     }
 
+    const discountedPrice = (product.price - (product.price * (product.discountPercentage ?? 0)) / 100).toFixed(2);
+
     return (
         <div>
             {
@@ -38,14 +41,16 @@ export const AddToCartButton = ({ product, className }: Props) => {
                     <div className='flex items-center justify-between gap-2.5 py-0.5'>
                         <p className='text-xs text-pink font-semibold'>Subtotal</p>
                         <p className='text-xs text-purple font-semibold'>
-                            <PriceFormatter amount={(product?.price) * currentQuantity} className='text-purple' />
+                            <PriceFormatter amount={parseFloat(discountedPrice) * currentQuantity} className='text-purple' />
                         </p>
                     </div>
                 </> : (
                     <Button
+                        size={buttonSize}
                         onClick={(handleAddToCart)}
                         disabled={isOutOfStock}
-                        className={cn("w-full bg-purple/80 text-light-bg shadow-none border border-purple/80 font-semibold tracking-wide hover:text-white hover:bg-purple hover:border-purple hoverEffect", className)}>
+                        className={cn("w-full bg-purple/80 text-light-bg shadow-none border border-purple/80 font-semibold tracking-wide hover:text-white hover:bg-purple hover:border-purple hoverEffect", className)}
+                        >
                         <ShoppingBag />{isOutOfStock ? "Out of Stock" : "Add to Cart"}
                     </Button>
                 )

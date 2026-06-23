@@ -59,7 +59,7 @@ const ProductGrid = () => {
           </div>
 
           {/* 👇 Observer trigger */}
-          <div ref={loadMoreRef} className="h-10" />
+          <div ref={loadMoreRef} className="h-0 w-0 " />
 
           {isFetchingNextPage && <MVLoader />}
         </>
