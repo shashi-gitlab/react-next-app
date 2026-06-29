@@ -5,8 +5,8 @@ const Logo = ({ className }: { className?: string }) => {
 
     return (
         // <Link href={"/"} className="inline-flex" >
-        //     <h2 className={cn("text-2xl text-purple font-black tracking-wider uppercase hover:text-pink/90 hoverEffect group font-sans", className)}>
-        //         <span className="text-pink group-hover:text-purple hoverEffect">MV</span>Cart
+        //     <h2 className={cn("text-2xl text-primary-color font-black tracking-wider uppercase hover:text-secondary-color /90 hoverEffect group font-sans", className)}>
+        //         <span className="text-secondary-color group-hover:text-primary-color hoverEffect">MV</span>Cart
         //     </h2>
         // </Link>
         <Link href="/" className="inline-flex group">

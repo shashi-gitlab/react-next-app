@@ -22,16 +22,21 @@ const SideMenu: FC<SideBarProps> = ({ isOpen, onClose, buttonRef  }) => {
             <div ref={sidebarRef} className='min-w-72 max-w-96 bg-white h-screen border-r border-r-light-green flex flex-col gap-4 text-light-color'>
                 <div className='flex items-center justify-between p-4 border-b'>
                     <Logo className='hoverEffect group' />
-                    <button className='hover:text-light-green' onClick={onClose}>
+                    <button className='hover:text-light-green hoverEffect' onClick={onClose}>
                         <X />
                     </button>
                 </div>
                 <div className='flex-1 flex flex-col justify-between overflow-y-auto'>
                     <ul className='gap-1'>
                         {headerData?.map((item) => (
-                            <li key={item?.title} className={`px-4 py-1 hover:text-light-green hover:font-semibold hover:cursor-pointer hover:border  ${pathName === item?.href && "bg-dark-green text-white"}`}>
-                                <Link href={item?.href} className={`hoverEffect relative group`} onClick={onClose}> 
+                            <li key={item?.title} className={`px-4 py-2`}>
+                                <Link 
+                                    href={item?.href} 
+                                    className={`capitalize font-semibold text-sm text-light-color hover:text-primary-color hoverEffect relative group block ${pathName === item?.href && "text-purple"}`}
+                                    onClick={onClose}
+                                > 
                                     {item?.title}
+                                    <span className={`absolute -bottom-0.5 left-0 w-0 h-0.5 bg-purple group-hover:w-full hoverEffect ${pathName === item?.href && "w-full"}`} />
                                 </Link>
                             </li>
                         ))}

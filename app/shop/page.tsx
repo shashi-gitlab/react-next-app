@@ -19,12 +19,12 @@ export async function generateMetadata() {
 export default async function ShopPage() {
 
   return (
-    <Container className="flex">
+    <Container className="flex flex-col md:flex-row gap-0">
       {/* Sidebar */}
       <ShopFilterBar  />
 
       {/* Product Grid */}
-      <main className='flex-1 px-5'>
+      <main className='w-full md:flex-1'>
         <ShopGrid />
       </main>
     </Container>

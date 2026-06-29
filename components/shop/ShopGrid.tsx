@@ -47,15 +47,17 @@ export const ShopGrid = () => {
                 <MVLoader />
             ) : products.length > 0 ? (
                 <>
-                    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 mt-6">
-                        {products.map((item) => (
-                            <ProductCard key={item.id} product={item} />
-                        ))}
-                    </div>
+                    <div className="px-3 md:px-5 py-16 md:py-0">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-4 md:mt-6">
+                            {products.map((item) => (
+                                <ProductCard key={item.id} product={item} />
+                            ))}
+                        </div>
 
-                    
-                    <div ref={loadMoreRef} className="h-20 w-full flex items-center justify-center">
-                        {isFetchingNextPage && <MVLoader />}
+                        
+                        <div ref={loadMoreRef} className="h-20 w-full flex items-center justify-center">
+                            {isFetchingNextPage && <MVLoader />}
+                        </div>
                     </div>
                 </>
             ) : (

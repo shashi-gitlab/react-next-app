@@ -39,8 +39,8 @@ export const AddToCartButton = ({ product, className, buttonSize }: Props) => {
                         <CartCounter item={product} quantity={currentQuantity}  addToCart={() => dispatch(addToCart(product))} decreaseQuantity={()=> dispatch(decreaseQuantity(product.id))}/>
                     </div>
                     <div className='flex items-center justify-between gap-2.5 py-0.5'>
-                        <p className='text-xs text-pink font-semibold'>Subtotal</p>
-                        <p className='text-xs text-purple font-semibold'>
+                        <p className='text-xs text-secondary-color font-semibold'>Subtotal</p>
+                        <p className='text-xs text-primary-color font-semibold'>
                             <PriceFormatter amount={parseFloat(discountedPrice) * currentQuantity} className='text-purple' />
                         </p>
                     </div>

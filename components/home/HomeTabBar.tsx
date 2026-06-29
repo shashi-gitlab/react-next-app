@@ -32,7 +32,7 @@ const HomeTabBar = ({ selectedTab, onSelectTab, categories, loading }: HomeTabBa
                 <CircleChevronLeft className="w-6 h-6 text-white" />
             </button>
             {loading && (
-                <Loader2 className="animate-spin text-pink" size={26} />
+                <Loader2 className="animate-spin text-secondary-color " size={26} />
             )}
             {/* Scrollable Tabs */}
             <div

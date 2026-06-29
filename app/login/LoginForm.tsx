@@ -2,17 +2,26 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Container } from '@/components/Container';
 import Logo from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { SubText, SubTitle, Title } from '@/components/ui/text';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { loginSuccess, signupSuccess, type UserProfile } from '@/app/store/authSlice';
 
 export default function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const dispatch = useAppDispatch();
+  const users = useAppSelector((state) => state.auth.users);
+
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [signupMethod, setSignupMethod] = useState<'email' | 'mobile'>('email');
   const [remember, setRemember] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+  const [statusTone, setStatusTone] = useState<'success' | 'error'>('success');
   const [form, setForm] = useState({
     fullName: '',
     email: '',
@@ -28,8 +37,71 @@ export default function LoginForm() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const action = mode === 'signin' ? 'Signed in' : 'Account created';
-    setStatusMessage(`${action} successfully. You can update profile details later from your account page.`);
+
+    const normalizedEmail = form.email.trim().toLowerCase();
+    const normalizedMobile = form.mobile.trim();
+    const redirectTo = searchParams.get('redirect') ?? '/profile';
+
+    if (mode === 'signup') {
+      if (form.password !== form.confirmPassword) {
+        setStatusTone('error');
+        setStatusMessage('Passwords do not match. Please re-enter them.');
+        return;
+      }
+
+      if (signupMethod === 'email' && !normalizedEmail) {
+        setStatusTone('error');
+        setStatusMessage('Please enter your email address to continue.');
+        return;
+      }
+
+      if (signupMethod === 'mobile' && !normalizedMobile) {
+        setStatusTone('error');
+        setStatusMessage('Please enter your mobile number to continue.');
+        return;
+      }
+
+      const existingUser = users.find((user) => user.email === normalizedEmail || user.mobile === normalizedMobile);
+      if (existingUser) {
+        setStatusTone('error');
+        setStatusMessage('An account with this email or mobile already exists.');
+        return;
+      }
+
+      const newUser: UserProfile = {
+        id: `${Date.now()}`,
+        fullName: form.fullName.trim(),
+        email: normalizedEmail,
+        mobile: normalizedMobile,
+        password: form.password,
+        address: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        country: 'India',
+      };
+
+      dispatch(signupSuccess({ user: newUser, users: [...users, newUser] }));
+      setStatusTone('success');
+      setStatusMessage('Account created successfully. Your profile is ready.');
+      router.push(redirectTo);
+      return;
+    }
+
+    const existingUser = users.find((user) => user.email === normalizedEmail);
+    if (!existingUser || existingUser.password !== form.password) {
+      setStatusTone('error');
+      setStatusMessage('We could not sign you in with those details. Please try again.');
+      return;
+    }
+
+    dispatch(loginSuccess({ user: existingUser, users }));
+    setStatusTone('success');
+    setStatusMessage('Signed in successfully. Enjoy shopping with MVCart.');
+    if (remember) {
+      localStorage.setItem('mvcart-remembered-email', normalizedEmail);
+    }
+    router.push(redirectTo);
   };
 
   const activeTabClass = 'border-b-2 border-purple text-purple';
@@ -38,8 +110,8 @@ export default function LoginForm() {
   return (
     <Container className="py-16">
       <div className="grid gap-10 lg:grid-cols-[1.25fr_0.85fr] items-start">
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-3 rounded-full bg-purple/10 px-4 py-2 text-sm font-semibold text-purple shadow-sm">
+        <div className="hidden md:block space-y-8">
+          <div className="inline-flex items-center gap-3 rounded-full bg-purple/10 px-4 py-2 text-sm font-semibold text-primary-color shadow-sm">
             <span className="h-2.5 w-2.5 rounded-full bg-pink" />
             Welcome back to MVCart
           </div>
@@ -47,7 +119,7 @@ export default function LoginForm() {
           <div className="space-y-6">
             <div>
               <Logo className="text-5xl" />
-              <Title className="mt-6 text-5xl leading-tight md:text-6xl">Sign in or create your account</Title>
+              <Title className="mt-6 text-2xl md:text-3xl leading-tight lg:text-4xl">Sign in or create your account</Title>
             </div>
             <SubText className="max-w-2xl text-lg text-slate-500">
               Use your email ID or mobile number to access MVCart. Once logged in, update your profile anytime on your account page.
@@ -151,20 +223,18 @@ export default function LoginForm() {
               )}
 
               {mode === 'signin' ? (
-                <>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-slate-700">Email address</label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="you@example.com"
-                      required
-                    />
-                  </div>
-                </>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-slate-700">Email address</label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
               ) : signupMethod === 'email' ? (
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-slate-700">Email address</label>
@@ -228,7 +298,7 @@ export default function LoginForm() {
                       type="checkbox"
                       checked={remember}
                       onChange={(event) => setRemember(event.target.checked)}
-                      className="h-4 w-4 rounded border-slate-300 text-purple focus:ring-purple"
+                      className="h-4 w-4 rounded border-slate-300 text-primary-color focus:ring-purple"
                     />
                     Remember me
                   </label>
@@ -237,18 +307,18 @@ export default function LoginForm() {
                 )}
 
                 {mode === 'signin' && (
-                  <Link href="/contact" className="text-sm font-semibold text-purple hover:text-pink transition-colors">
+                  <Link href="/contact" className="text-sm font-semibold text-primary-color hover:text-secondary-color transition-colors">
                     Forgot password?
                   </Link>
                 )}
               </div>
 
-              <Button type="submit" className="w-full bg-linear-to-r from-purple to-pink text-white py-4 text-base font-semibold">
-                {mode === 'signin' ? 'Sign in securely' : 'Create account'}
+              <Button type="submit" className="w-full gradientBackground py-4 text-base font-semibold">
+                {mode === 'signin' ? 'Sign in' : 'Create account'}
               </Button>
             </form>
 
-            <div className="relative py-4">
+            {/* <div className="relative py-4">
               <div className="absolute inset-x-0 top-1/2 h-px bg-slate-200" />
               <p className="relative mx-auto inline-block bg-white px-4 text-sm text-slate-500">or continue with</p>
             </div>
@@ -256,7 +326,7 @@ export default function LoginForm() {
             <div className="grid gap-3">
               <Button type="button" variant="outline" className="w-full rounded-full text-slate-700">Continue with Google</Button>
               <Button type="button" variant="outline" className="w-full rounded-full text-slate-700">Continue with Apple</Button>
-            </div>
+            </div> */}
 
             <p className="text-center text-sm text-slate-500">
               {mode === 'signin'
@@ -265,14 +335,14 @@ export default function LoginForm() {
               <button
                 type="button"
                 onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
-                className="font-semibold text-purple hover:text-pink"
+                className="font-semibold text-primary-color hover:text-secondary-color "
               >
                 {mode === 'signin' ? 'Create account' : 'Sign in'}
               </button>
             </p>
 
             {statusMessage && (
-              <div className="rounded-3xl border border-green-100 bg-green-50 p-4 text-sm text-green-700">
+              <div className={`rounded-3xl border p-4 text-sm ${statusTone === 'success' ? 'border-green-100 bg-green-50 text-green-700' : 'border-red-200 bg-red-50 text-red-700'}`}>
                 {statusMessage}
               </div>
             )}

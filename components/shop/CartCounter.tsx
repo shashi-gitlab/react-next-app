@@ -14,7 +14,7 @@ export const CartCounter = ({ item, quantity, addToCart, decreaseQuantity }:Prop
             <Button size="xs" variant="ghost" onClick={() => decreaseQuantity(item.id)}>
                 <MinusIcon size={14} className="text-purple"/>
             </Button>
-            <span className="px-3 font-semibold text-sm text-purple bg-gray-100">{quantity}</span>
+            <span className="px-3 font-semibold text-sm text-primary-color bg-gray-100">{quantity}</span>
             <Button size="xs" variant="ghost" onClick={() => addToCart(item)}>
                 <PlusIcon size={14} className="text-purple"/>
             </Button>

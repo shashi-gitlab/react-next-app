@@ -1,25 +1,42 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Container } from '@/components/Container';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { SubText, SubTitle, Title } from '@/components/ui/text';
+import { SubText, Title } from '@/components/ui/text';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { updateProfile, type UserProfile } from '@/app/store/authSlice';
 
-const initialProfile = {
-  fullName: 'Rahul Sharma',
-  email: 'rahul@example.com',
-  mobile: '+91 98765 43210',
-  address: '123 MVCart Street',
-  city: 'Nagpur',
-  state: 'Maharashtra',
-  postalCode: '440001',
+const initialProfile: UserProfile = {
+  id: '',
+  fullName: '',
+  email: '',
+  mobile: '',
+  password: '',
+  address: '',
+  city: '',
+  state: '',
+  postalCode: '',
   country: 'India',
 };
 
 export default function ProfileForm() {
-  const [profile, setProfile] = useState(initialProfile);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.auth.user);
+  const [profile, setProfile] = useState<UserProfile>(initialProfile);
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (!user) {
+      router.replace('/login?redirect=/profile');
+      return;
+    }
+
+    setProfile({ ...user });
+  }, [router, user]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -28,8 +45,31 @@ export default function ProfileForm() {
 
   const saveProfile = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!user) {
+      return;
+    }
+
+    const updatedProfile: UserProfile = {
+      ...user,
+      ...profile,
+      fullName: profile.fullName.trim(),
+      email: profile.email.trim().toLowerCase(),
+      mobile: profile.mobile.trim(),
+      address: profile.address.trim(),
+      city: profile.city.trim(),
+      state: profile.state.trim(),
+      postalCode: profile.postalCode.trim(),
+      country: profile.country.trim(),
+    };
+
+    dispatch(updateProfile(updatedProfile));
     setMessage('Your profile details have been updated successfully.');
   };
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <Container className="py-16">
