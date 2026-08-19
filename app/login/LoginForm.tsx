@@ -109,8 +109,9 @@ export default function LoginForm() {
 
   return (
     <Container className="py-16">
-      <div className="grid gap-10 lg:grid-cols-[1.25fr_0.85fr] items-start">
-        <div className="hidden md:block space-y-8">
+      <div className="max-w-4xl mx-auto">
+      {/* <div className="grid gap-10 lg:grid-cols-[1.25fr_0.85fr] items-center"> */}
+        {/* <div className="hidden md:block space-y-8">
           <div className="inline-flex items-center gap-3 rounded-full bg-purple/10 px-4 py-2 text-sm font-semibold text-primary-color shadow-sm">
             <span className="h-2.5 w-2.5 rounded-full bg-pink" />
             Welcome back to MVCart
@@ -144,10 +145,13 @@ export default function LoginForm() {
               <SubText>Update your details later in the profile page.</SubText>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="rounded-[40px] border border-purple/10 bg-white p-10 shadow-xl shadow-purple/5">
           <div className="space-y-8">
+            <div> 
+                <Logo className="items-center" />
+              </div>
             <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 pb-4">
               <button
                 type="button"

@@ -1,16 +1,13 @@
+import { mv_logo } from "@/app/images";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 
 const Logo = ({ className }: { className?: string }) => {
 
     return (
-        // <Link href={"/"} className="inline-flex" >
-        //     <h2 className={cn("text-2xl text-primary-color font-black tracking-wider uppercase hover:text-secondary-color /90 hoverEffect group font-sans", className)}>
-        //         <span className="text-secondary-color group-hover:text-primary-color hoverEffect">MV</span>Cart
-        //     </h2>
-        // </Link>
         <Link href="/" className="inline-flex group">
-            <h2
+            {/* <h2
                 className={cn(
                     'text-2xl bg-linear-to-tl from-purple to-pink bg-clip-text text-transparent',
                     'group-hover:from-pink group-hover:to-purple', // Specific colors to change on hover
@@ -19,7 +16,8 @@ const Logo = ({ className }: { className?: string }) => {
                 )}
             >
                 <span className="hoverEffect">MV</span>Cart
-            </h2>
+            </h2> */}
+            <Image src={mv_logo} alt="MV-Logo" width={185} height={55} priority  className="h-auto w-32 md:w-45" />
         </Link>
     )
 }
